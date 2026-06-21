@@ -1,16 +1,26 @@
 ---
+import img1 from '../../assets/midjourney1.png';
+import img2 from '../../assets/midjourney2.png';
+import img3 from '../../assets/midjourney3.png';
+import img4 from '../../assets/midjourney4.png';
+import img5 from '../../assets/midjourney5.png';
+import img6 from '../../assets/midjourney6.png';
+import img7 from '../../assets/midjourney7.png';
+import img8 from '../../assets/midjourney8.png';
+import img9 from '../../assets/midjourney9.png';
+import img10 from '../../assets/midjourney10.png';
+import defaultImg from '../../assets/midjourney11.png';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { SITE_TITLE } from '../../consts';
-import img1 from '../../assets/blog-placeholder-1.jpg';
-import img2 from '../../assets/blog-placeholder-2.jpg';
-import img3 from '../../assets/blog-placeholder-3.jpg';
+
+const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 const projects = [
 	{
 		id: 'quokka',
-		image: img1,
+		image: allImages[0],
 		title: 'Quokka Blog',
 		titleZh: 'Quokka 博客',
 		description: 'A minimal, bilingual Astro blog theme with content collections and RSS support.',
@@ -19,7 +29,7 @@ const projects = [
 	},
 	{
 		id: 'toolkit',
-		image: img2,
+		image: allImages[1],
 		title: 'Dev Toolkit',
 		titleZh: '开发工具包',
 		description: 'A collection of reusable utilities and components for modern web development.',
@@ -28,7 +38,7 @@ const projects = [
 	},
 	{
 		id: 'dashboard',
-		image: img3,
+		image: allImages[2],
 		title: 'Analytics Dashboard',
 		titleZh: '分析仪表盘',
 		description: 'Real-time metrics and insights dashboard built with TypeScript and D3.js.',
@@ -51,7 +61,7 @@ const projects = [
 					projects.map((project) => (
 						<a class="project-card" href={project.url}>
 							<div class="card-image">
-								<img src={project.image.src} alt="" loading="lazy" />
+								<img src={project.image.src} alt="" loading="lazy" class="project-img" data-id={project.id} onerror={'this.onerror=null;this.src=\'' + defaultImg.src + '\''} />
 							</div>
 							<div class="card-body">
 								<h3 class="card-title">
@@ -116,8 +126,9 @@ const projects = [
 	}
 
 	.card-image {
+		flex: 1;
+		min-height: 0;
 		width: 100%;
-		aspect-ratio: 16 / 10;
 		overflow: hidden;
 		background: rgb(var(--paper));
 	}
@@ -125,7 +136,7 @@ const projects = [
 	.card-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		transition: transform 300ms ease;
 	}
 
@@ -135,6 +146,7 @@ const projects = [
 	}
 
 	.card-body {
+		flex: 1;
 		padding: 18px 20px 22px;
 	}
 
