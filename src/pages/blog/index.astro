@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${SITE_TITLE} / Blog`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="blog-index">
+			<section class="post-list" aria-label="Posts">
+				{
+					posts.map((post) => (
+						<a class="post-row" href={`/blog/${post.id}/`}>
+							<span class="post-main">
+								<span class="post-title">
+									<span class="lang-en">{post.data.title}</span>
+									<span class="lang-zh">{post.data.titleZh || post.data.title}</span>
+								</span>
+								<span class="post-description">
+									<span class="lang-en">{post.data.description}</span>
+									<span class="lang-zh">{post.data.descriptionZh || post.data.description}</span>
+								</span>
+							</span>
+						</a>
+					))
+				}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.blog-index {
+		width: min(100% - 32px, 760px);
+		margin: 0 auto;
+		padding: 38px 0 72px;
+	}
+
+	.post-row {
+		display: block;
+		padding: 22px 20px 22px 22px;
+		margin-bottom: 12px;
+		border-radius: 10px;
+		color: rgb(var(--black));
+		text-decoration: none;
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.9) inset,
+			0 10px 24px rgba(83, 125, 150, 0.05),
+			0 0 0 1px rgba(68, 161, 148, 0.03) inset;
+		transition:
+			background 160ms ease,
+			background-position 160ms ease,
+			color 160ms ease,
+			border-color 160ms ease,
+			box-shadow 160ms ease;
+	}
+
+	.post-row:hover .post-title,
+	.post-row:focus-visible .post-title {
+		color: rgb(var(--list-slate));
+	}
+
+	.post-row:hover,
+	.post-row:focus-visible {
+		border-color: rgba(68, 161, 148, 0.34);
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.95) inset,
+			0 14px 28px rgba(83, 125, 150, 0.08),
+			0 0 0 1px rgba(236, 143, 141, 0.04) inset;
+		outline: none;
+	}
+
+	.post-row:hover .post-description,
+	.post-row:focus-visible .post-description {
+		color: rgb(68, 161, 148);
+	}
+
+	.post-row:active {
+		transform: translateY(1px);
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(244, 240, 228, 1)),
+			linear-gradient(90deg, rgba(68, 161, 148, 0.08), rgba(83, 125, 150, 0.06), rgba(236, 143, 141, 0.08));
+	}
+
+	.post-main,
+	.post-title,
+	.post-description {
+		display: block;
+	}
+
+	.post-title {
+		color: rgb(var(--black));
+		font-size: 1.22rem;
+		font-weight: 650;
+		line-height: 1.35;
+		transition: color 160ms ease;
+	}
+
+	.post-row:hover .post-title,
+	.post-row:focus-visible .post-title {
+		color: rgb(83, 125, 150);
+	}
+
+	.post-description {
+		margin-top: 8px;
+		color: rgb(var(--muted));
+		font-size: 0.95rem;
+		line-height: 1.65;
+		transition: color 160ms ease;
+	}
+
+	@media (max-width: 620px) {
+		.blog-index {
+			padding: 28px 0 52px;
+		}
+
+		.post-row {
+			padding: 20px 16px 20px 18px;
+			margin-bottom: 8px;
+		}
+	}
+</style>

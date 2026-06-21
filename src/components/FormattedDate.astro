@@ -1,0 +1,23 @@
+---
+interface Props {
+	date: Date;
+}
+
+const { date } = Astro.props;
+
+const enDate = date.toLocaleDateString('en-us', {
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric',
+});
+const zhDate = date.toLocaleDateString('zh-CN', {
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric',
+});
+---
+
+<time datetime={date.toISOString()}>
+	<span class="lang-en">{enDate}</span>
+	<span class="lang-zh">{zhDate}</span>
+</time>

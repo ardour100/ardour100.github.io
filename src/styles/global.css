@@ -1,0 +1,180 @@
+:root {
+	--accent: 83, 125, 150;
+	--list-paper: #f4f0e4;
+	--list-teal: #80CBC4;
+	--list-slate: #cb8080;
+	--list-rose: #ec8f8d;
+	--list-white: #ffffff;
+	--black: 18, 18, 18;
+	--gray-dark: 42, 42, 42;
+	--muted: 106, 106, 106;
+	--line: 229, 229, 229;
+	--line-strong: 188, 188, 188;
+	--paper: 244, 240, 228;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: #fff;
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	color: rgb(var(--gray-dark));
+	background:
+		#fff;
+	font-family:
+		var(--font-atkinson),
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	font-size: 18px;
+	line-height: 1.7;
+	text-align: left;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+html[data-lang='en'] .lang-zh,
+html[data-lang='zh'] .lang-en {
+	display: none !important;
+}
+
+a {
+	color: rgb(var(--accent));
+}
+
+a:hover {
+	color: rgb(var(--accent));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 0.75rem;
+	color: rgb(var(--black));
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+h3 {
+	font-size: 1.35rem;
+}
+
+p {
+	margin: 0 0 1.25em;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+strong,
+b {
+	font-weight: 700;
+}
+
+code {
+	padding: 2px 5px;
+	border-radius: 3px;
+	background: rgb(var(--paper));
+	color: rgb(var(--black));
+	font-size: 0.9em;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 1.25rem;
+	border: 1px solid rgb(var(--line));
+	border-radius: 4px;
+	background: rgb(var(--paper));
+}
+
+pre > code {
+	all: unset;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+	font-size: 0.9rem;
+}
+
+blockquote {
+	margin: 2rem 0;
+	padding-left: 1.25rem;
+	border-left: 2px solid rgb(var(--black));
+	color: rgb(var(--muted));
+	font-size: 1.05rem;
+}
+
+hr {
+	border: 0;
+	/* border-top: 1px solid rgb(var(--line)); */
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 0.65rem;
+	border-bottom: 1px solid rgb(var(--line));
+	text-align: left;
+}
+
+.prose > * + * {
+	margin-top: 1.4rem;
+}
+
+.prose p {
+	margin-bottom: 0;
+}
+
+.prose a {
+	text-underline-offset: 3px;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+	margin-top: 2.4rem;
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1.4rem;
+}
+
+.prose li + li {
+	margin-top: 0.35rem;
+}
+
+.sr-only {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+}

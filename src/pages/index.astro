@@ -1,0 +1,50 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const homeImage =
+	'https://twa.imgix.net/https%3A%2F%2Fassets.atdw-online.com.au%2Fimages%2F95873feb1976e4e44399f17b553e19e8.jpeg%3Frect%3D0%2C241%2C2500%2C1406%26rot%3D360?auto=format&h=650&w=750&fit=crop&crop=edges&q=85&s=193a321f42b0de39d86ef68cb95dd38a';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="home-image-page">
+		<Header />
+		<main class="home-frame">
+			<img src={homeImage} alt="" />
+		</main>
+	</body>
+</html>
+
+<style>
+	.home-image-page {
+		min-height: 100vh;
+	}
+
+	.home-frame {
+		display: grid;
+		min-height: calc(100vh - 73px);
+		place-items: center;
+		width: min(100% - 32px, 760px);
+		margin: 0 auto;
+		padding: 56px 0 72px;
+	}
+
+	img {
+		display: block;
+		width: min(100%, 750px);
+		height: auto;
+		border-radius: 4px;
+	}
+
+	@media (max-width: 620px) {
+		.home-frame {
+			min-height: calc(100vh - 65px);
+			padding: 36px 0 52px;
+		}
+	}
+</style>

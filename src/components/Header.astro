@@ -1,0 +1,107 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+interface Props {
+	showBrand?: boolean;
+}
+
+const { showBrand = true } = Astro.props;
+---
+
+<header class="site-header">
+	<nav class="site-nav" aria-label="Primary navigation">
+		{showBrand && <a class="brand" href="/">{SITE_TITLE}</a>}
+		<div class:list={['nav-actions', { 'nav-actions--solo': !showBrand }]}>
+			<LanguageSwitch />
+			<div class="internal-links">
+				<HeaderLink href="/projects">
+					<span class="lang-en">Projects</span>
+					<span class="lang-zh">项目</span>
+				</HeaderLink>
+				<HeaderLink href="/blog">
+					<span class="lang-en">Blog</span>
+					<span class="lang-zh">博客</span>
+				</HeaderLink>
+				<HeaderLink href="/about">
+					<span class="lang-en">About</span>
+					<span class="lang-zh">关于</span>
+				</HeaderLink>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<style>
+	.site-header {
+		background: rgba(255, 255, 255, 92%);
+		backdrop-filter: blur(16px);
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: min(100% - 32px, 760px);
+		margin: 0 auto;
+		min-height: 72px;
+	}
+
+	.brand {
+		color: rgb(var(--black));
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: 0;
+		text-decoration: none;
+	}
+
+	.nav-actions,
+	.internal-links {
+		display: flex;
+		align-items: center;
+	}
+
+	.nav-actions {
+		gap: 1.25rem;
+	}
+
+	.nav-actions--solo {
+		margin-left: auto;
+	}
+
+	.internal-links {
+		gap: 1rem;
+	}
+
+	.internal-links a {
+		color: rgb(var(--muted));
+		font-size: 0.9rem;
+		text-decoration: none;
+	}
+
+	.internal-links a:hover,
+	.internal-links a.active {
+		color: rgb(var(--black));
+	}
+
+	@media (max-width: 620px) {
+		.site-nav {
+			min-height: 64px;
+		}
+
+		.nav-actions {
+			gap: 0.65rem;
+		}
+
+		.internal-links {
+			gap: 0.65rem;
+		}
+
+		.brand {
+			max-width: 42vw;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+</style>
