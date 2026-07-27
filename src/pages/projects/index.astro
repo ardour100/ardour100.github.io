@@ -12,8 +12,10 @@ import img10 from '../../assets/midjourney10.png';
 import defaultImg from '../../assets/midjourney11.png';
 
 import LRN from '../../assets/LRN_Logos.png';
-import Bindo from '../../assets/Bindo.png';
+import Bell from '../../assets/Bell.png';
+import Bindo from '../../assets/Bindo_Logo.png';
 import Sunline from '../../assets/Sunline.png';
+import Midea from '../../assets/Midea.png';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -42,7 +44,7 @@ const workProjects = [
 	},
 	{
 		id: 'payments',
-		image: allImages[9],
+		image: Bell,
 		title: 'Bell.ai',
 		titleZh: '少儿编程',
 		description: 'Unlocking kids infinite potential through the joy of coding',
@@ -57,6 +59,15 @@ const workProjects = [
 		description: 'Lead the Development of Empowering Technologies and Innovation in the Financial Industry',
 		descriptionZh: '引领金融行业技术赋能与创新发展',
 		url: 'https://www.sunline-i.com/',
+	},
+	{
+		id: 'Midea',
+		image: Midea,
+		title: 'Midea',
+		titleZh: '美的',
+		description: 'Intership in a global electrical appliance manufacturer',
+		descriptionZh: '管培实习',
+		url: 'https://www.midea.com/au/',
 	},
 ];
 
@@ -237,6 +248,7 @@ const personalProjects = [
 
 	.card-image img {
 		width: 100%;
+		height: 100%;
 		object-fit: contain;
 		transition: transform 300ms ease;
 	}
