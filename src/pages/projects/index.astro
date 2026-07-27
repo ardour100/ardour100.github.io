@@ -10,6 +10,10 @@ import img8 from '../../assets/midjourney8.png';
 import img9 from '../../assets/midjourney9.png';
 import img10 from '../../assets/midjourney10.png';
 import defaultImg from '../../assets/midjourney11.png';
+
+import LRN from '../../assets/LRN_Logos.png';
+import Bindo from '../../assets/Bindo.png';
+import Sunline from '../../assets/Sunline.png';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
@@ -17,10 +21,49 @@ import { SITE_TITLE } from '../../consts';
 
 const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
-const projects = [
+const workProjects = [
+	{
+		id: 'analytics',
+		image: LRN,
+		title: 'Learnosity',
+		titleZh: '教育科技',
+		description: 'Learnosity Assessment APIs | AI-enriched assessment solutions',
+		descriptionZh: 'AI 赋能的测评解决方案',
+		url: 'https://learnosity.com/',
+	},
+	{
+		id: 'infra',
+		image: Bindo,
+		title: 'Bindo Labs',
+		titleZh: '边度',
+		description: 'The Omnichannel POS and Payment Solution',
+		descriptionZh: '全渠道 POS 与支付解决方案',
+		url: 'https://bindolabs.com/',
+	},
+	{
+		id: 'payments',
+		image: allImages[9],
+		title: 'Bell.ai',
+		titleZh: '少儿编程',
+		description: 'Unlocking kids infinite potential through the joy of coding',
+		descriptionZh: '寓教于乐学编程，激发少儿无限潜能',
+		url: 'https://www.bell.ai/',
+	},
+	{
+		id: 'design-system',
+		image: Sunline,
+		title: 'Sunline',
+		titleZh: '银行系统',
+		description: 'Lead the Development of Empowering Technologies and Innovation in the Financial Industry',
+		descriptionZh: '引领金融行业技术赋能与创新发展',
+		url: 'https://www.sunline-i.com/',
+	},
+];
+
+const personalProjects = [
 	{
 		id: 'quokka',
-		image: allImages[0],
+		image: allImages[4],
 		title: 'Quokka Blog',
 		titleZh: 'Quokka 博客',
 		description: 'A minimal, bilingual Astro blog theme with content collections and RSS support.',
@@ -28,21 +71,30 @@ const projects = [
 		url: 'https://github.com/ardour100/Astro-Quokka',
 	},
 	{
-		id: 'toolkit',
-		image: allImages[1],
-		title: 'Dev Toolkit',
-		titleZh: '开发工具包',
-		description: 'A collection of reusable utilities and components for modern web development.',
-		descriptionZh: '一系列用于现代 Web 开发的可复用工具和组件。',
+		id: 'weather',
+		image: allImages[5],
+		title: 'Weather App',
+		titleZh: '天气应用',
+		description: 'A beautiful weather app with hourly forecasts, radar maps, and severe weather alerts.',
+		descriptionZh: '一款精美的天气应用，支持逐小时预报、雷达地图和恶劣天气预警。',
 		url: '#',
 	},
 	{
-		id: 'dashboard',
-		image: allImages[2],
-		title: 'Analytics Dashboard',
-		titleZh: '分析仪表盘',
-		description: 'Real-time metrics and insights dashboard built with TypeScript and D3.js.',
-		descriptionZh: '使用 TypeScript 和 D3.js 构建的实时指标和洞察仪表盘。',
+		id: 'chat',
+		image: allImages[6],
+		title: 'Chat Platform',
+		titleZh: '聊天平台',
+		description: 'Real-time messaging platform with end-to-end encryption, file sharing, and group chats.',
+		descriptionZh: '实时通讯平台，支持端到端加密、文件共享和群聊。',
+		url: '#',
+	},
+	{
+		id: 'ecommerce',
+		image: allImages[7],
+		title: 'E-Commerce Store',
+		titleZh: '电商商店',
+		description: 'Full-stack online store with cart, checkout, payment integration, and admin dashboard.',
+		descriptionZh: '全栈在线商店，包含购物车、结算、支付集成和管理后台。',
 		url: '#',
 	},
 ];
@@ -56,26 +108,51 @@ const projects = [
 	<body>
 		<Header />
 		<main class="projects-index">
-			<section class="project-grid" aria-label="Projects">
-				{
-					projects.map((project) => (
-						<a class="project-card" href={project.url}>
-							<div class="card-image">
-								<img src={project.image.src} alt="" loading="lazy" class="project-img" data-id={project.id} onerror={'this.onerror=null;this.src=\'' + defaultImg.src + '\''} />
-							</div>
-							<div class="card-body">
-								<h3 class="card-title">
-									<span class="lang-en">{project.title}</span>
-									<span class="lang-zh">{project.titleZh}</span>
-								</h3>
-								<p class="card-desc">
-									<span class="lang-en">{project.description}</span>
-									<span class="lang-zh">{project.descriptionZh}</span>
-								</p>
-							</div>
-						</a>
-					))
-				}
+			<div class="section-header">
+				<span class="section-badge lang-en">Work</span>
+				<span class="section-badge lang-zh">工作</span>
+			</div>
+			<section class="project-grid">
+				{workProjects.map((project) => (
+					<a class="project-card" href={project.url}>
+						<div class="card-image">
+							<img src={project.image.src} alt="" loading="lazy" class="project-img" data-id={project.id} onerror={'this.onerror=null;this.src=\'' + defaultImg.src + '\''} />
+						</div>
+						<div class="card-body">
+							<h3 class="card-title">
+								<span class="lang-en">{project.title}</span>
+								<span class="lang-zh">{project.titleZh}</span>
+							</h3>
+							<p class="card-desc">
+								<span class="lang-en">{project.description}</span>
+								<span class="lang-zh">{project.descriptionZh}</span>
+							</p>
+						</div>
+					</a>
+				))}
+			</section>
+			<div class="section-header">
+				<span class="section-badge lang-en">Personal</span>
+				<span class="section-badge lang-zh">个人</span>
+			</div>
+			<section class="project-grid">
+				{personalProjects.map((project) => (
+					<a class="project-card" href={project.url}>
+						<div class="card-image">
+							<img src={project.image.src} alt="" loading="lazy" class="project-img" data-id={project.id} onerror={'this.onerror=null;this.src=\'' + defaultImg.src + '\''} />
+						</div>
+						<div class="card-body">
+							<h3 class="card-title">
+								<span class="lang-en">{project.title}</span>
+								<span class="lang-zh">{project.titleZh}</span>
+							</h3>
+							<p class="card-desc">
+								<span class="lang-en">{project.description}</span>
+								<span class="lang-zh">{project.descriptionZh}</span>
+							</p>
+						</div>
+					</a>
+				))}
 			</section>
 		</main>
 		<Footer />
@@ -87,6 +164,31 @@ const projects = [
 		width: min(100% - 32px, 920px);
 		margin: 0 auto;
 		padding: 38px 0 72px;
+	}
+
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 24px;
+		padding-top: 8px;
+	}
+
+	.section-header + .section-header {
+		margin-top: 48px;
+	}
+
+	.section-badge {
+		display: inline-block;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: rgb(var(--muted));
+		padding: 4px 12px;
+		border-radius: 6px;
+		background: rgba(var(--muted), 0.06);
+		border: 1px solid rgba(var(--muted), 0.12);
 	}
 
 	.project-grid {
@@ -135,7 +237,6 @@ const projects = [
 
 	.card-image img {
 		width: 100%;
-		height: 100%;
 		object-fit: contain;
 		transition: transform 300ms ease;
 	}
@@ -175,6 +276,10 @@ const projects = [
 			grid-template-columns: repeat(2, 1fr);
 			gap: 18px;
 		}
+
+		.section-header + .section-header {
+			margin-top: 40px;
+		}
 	}
 
 	@media (max-width: 520px) {
@@ -185,6 +290,10 @@ const projects = [
 		.project-grid {
 			grid-template-columns: 1fr;
 			gap: 16px;
+		}
+
+		.section-header + .section-header {
+			margin-top: 36px;
 		}
 
 		.card-body {
