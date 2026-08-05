@@ -9,6 +9,7 @@ import img7 from '../../assets/midjourney7.png';
 import img8 from '../../assets/midjourney8.png';
 import img9 from '../../assets/midjourney9.png';
 import img10 from '../../assets/midjourney10.png';
+import img28 from '../../assets/midjourney28.png';
 import defaultImg from '../../assets/midjourney11.png';
 
 import LRN from '../../assets/LRN_Logos.png';
@@ -21,9 +22,30 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { SITE_TITLE } from '../../consts';
 
-const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,img28];
 
 const workProjects = [
+	{
+		id: 'analytics',
+		image: LRN,
+		title: 'Learnosity',
+		titleZh: '教育科技',
+		description: 'Learnosity Assessment APIs | AI-enriched assessment solutions',
+		descriptionZh: 'AI 赋能的测评解决方案',
+		url: 'https://learnosity.com/',
+	},
+	{
+		id: 'infra',
+		image: Bindo,
+		title: 'Bindo Labs',
+		titleZh: '边度',
+		description: 'The Omnichannel POS and Payment Solution',
+		descriptionZh: '全渠道 POS 与支付解决方案',
+		url: 'https://bindolabs.com/',
+	},
+];
+
+const workProjects2 = [
 	{
 		id: 'analytics',
 		image: LRN,
@@ -72,6 +94,15 @@ const workProjects = [
 ];
 
 const personalProjects = [
+	{
+		id: 'cv',
+		image: allImages[10],
+		title: 'Computer Vision Assessment',
+		titleZh: '计算机视觉测验',
+		description: 'An interactive exam practice app for computer vision topics.',
+		descriptionZh: '帮助复习计算机视觉的交互测试平台。',
+		url: 'https://github.com/zhu-ting/Computer-Vision-Go',
+	},
 	{
 		id: 'quokka',
 		image: allImages[4],
